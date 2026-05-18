@@ -1,0 +1,15 @@
+from sqlalchemy import create_engine 
+# step 1 : Connect To Postgresql 
+# Replace Placeholdr with your actual value
+
+username = 'postgres' # default User
+host = 'localhost' # It means it is Running locally
+port = '5432'  # default postgres port number when we didnt change while installating 
+password = '1234'# The Password you set during installation 
+database = 'customer_behavior' # Data base which was created and on which we are going to work on
+engine = create_engine(f"postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}")
+
+# Step 2 : Loading Dataframe into Postgresql
+table_name = 'customers' # Choose any table meand we are creating it right now
+df.to_sql(table_name, engine, if_exists="replace", index="false")
+print(f"Database Succefull Loaded into {table_name} ' in database' {database}")
